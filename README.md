@@ -37,34 +37,28 @@ DIRECTORY STRUCTURE
 REQUIREMENTS
 ------------
 
-The minimum requirement by this project template that your Web server supports PHP 7.4.
-
+* The minimum requirement by this project template that your Web server supports PHP 7.4.
+* Database sever MySQL / MariaDB
+* Apache 2.4
 
 INSTALLATION
 ------------
+### Clone the repo from github
 
-### Install via Composer
+~~~
+git clone git@github.com:gicharu/fruity.git
+~~~
+### Install dependencies using Composer
 
 If you do not have [Composer](http://getcomposer.org/), you may install it by following the instructions
 at [getcomposer.org](http://getcomposer.org/doc/00-intro.md#installation-nix).
 
-You can then install this project template using the following command:
+Install the dependencies using:
 
 ~~~
-composer create-project --prefer-dist yiisoft/yii2-app-basic basic
+composer install
 ~~~
-
-Now you should be able to access the application through the following URL, assuming `basic` is the directory
-directly under the Web root.
-
-~~~
-http://localhost/basic/web/
-~~~
-
-### Install from an Archive File
-
-Extract the archive file downloaded from [yiiframework.com](http://www.yiiframework.com/download/) to
-a directory named `basic` that is directly under the Web root.
+### Configure cookie
 
 Set cookie validation key in `config/web.php` file to some random secret string:
 
@@ -75,34 +69,12 @@ Set cookie validation key in `config/web.php` file to some random secret string:
 ],
 ```
 
-You can then access the application through the following URL:
+### Setup a virtual host
+Configure a virtual host on your machine that points to the project web root folder (/web)
 
-~~~
-http://localhost/basic/web/
-~~~
+Now you should be able to access the application through the virtual host created from the previous step above 
+e.g http://fruity.test
 
-
-### Install with Docker
-
-Update your vendor packages
-
-    docker-compose run --rm php composer update --prefer-dist
-    
-Run the installation triggers (creating cookie validation code)
-
-    docker-compose run --rm php composer install    
-    
-Start the container
-
-    docker-compose up -d
-    
-You can then access the application through the following URL:
-
-    http://127.0.0.1:8000
-
-**NOTES:** 
-- Minimum required Docker engine version `17.04` for development (see [Performance tuning for volume mounts](https://docs.docker.com/docker-for-mac/osxfs-caching/))
-- The default configuration uses a host-volume in your home directory `.docker-composer` for composer caches
 
 
 CONFIGURATION
@@ -127,6 +99,14 @@ return [
 - Check and edit the other files in the `config/` directory to customize your application as required.
 - Refer to the README in the `tests` directory for information specific to basic application tests.
 
+
+MIGRATION
+-------
+Once the database is setup, run the migration
+
+~~~
+php yii migrate
+~~~
 
 TESTING
 -------
