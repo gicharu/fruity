@@ -42,11 +42,11 @@ class FruitsController extends \yii\console\Controller
 
             }
             $mailSent = \Yii::$app->mailer->compose()
-                ->setFrom('from@domain.com')
-                ->setTo('to@domain.com')
-                ->setSubject('Message subject')
-                ->setTextBody('Plain text content')
-                ->setHtmlBody('<b>HTML content</b>')
+                ->setFrom(['noreply@hubconexionz.com', 'Fruity cron'])
+                ->setTo(\Yii::$app->params['adminEmail'])
+                ->setSubject('Fruits downloaded')
+                ->setTextBody('Fruits has successfully been downloaded from the API')
+                ->setHtmlBody('<b>Fruits has successfully been downloaded from the API</b>')
                 ->send();
             if(!$mailSent) {
                 throw new \Exception("An error occurred while sending email");

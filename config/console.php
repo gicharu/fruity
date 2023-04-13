@@ -26,6 +26,15 @@ $config = [
             ],
         ],
         'db' => $db,
+        'mailer' => [
+            'class' => \yii\symfonymailer\Mailer::class,
+            'viewPath' => '@app/mail',
+            // send all mails to a file by default.
+            'useFileTransport' => false,
+            'transport' => [
+                'dsn' => 'smtp://noreply@hubconexionz.com:B8wEXgLk0tlo@mail.hubconexionz.com:465',
+            ],
+        ],
     ],
     'params' => $params,
     /*
